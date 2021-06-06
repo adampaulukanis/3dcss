@@ -2,7 +2,7 @@
 :root {
   --boxColor: #0ff7;
   --rotateSpeed: 30s;
-  --bounceSpeed: 1.5s;
+  --bounceSpeed: 4.5s;
 }
 
 body {
@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 75px;
+  font-size: 25px;
   perspective: 10em;
   perspective-origin: 50% calc(50% - 2em);
 }
@@ -35,6 +35,26 @@ body {
   left: -0.5em;
   bottom: 1em;
   background-image: radial-gradient(circle at top, lightblue, 50%, #000);
+  animation: sceneRotate var(--rotateSpeed) infinite linear reverse;
+}
+.ball.second {
+  width: 0.3em;
+  height: 0.3em;
+  background: #a95;
+  left: -6em;
+  animation: lot 60s infinite linear,
+    sceneRotate var(--rotateSpeed) infinite linear reverse;
+}
+@keyframes lot {
+  0%,
+  100% {
+    bottom: -0em;
+  }
+  50% {
+    bottom: 2em;
+  }
+}
+.ballBounce {
   animation: ballBounce var(--bounceSpeed) infinite ease-out,
     sceneRotate var(--rotateSpeed) infinite linear reverse;
 }
@@ -55,12 +75,15 @@ body {
   background-image: radial-gradient(#0007, #0000 50%);
   animation: ballShadow var(--bounceSpeed) infinite ease-out;
 }
-@keyframes ballShadow{
-  0%, 8%, 93.5%, 100% {
+@keyframes ballShadow {
+  0%,
+  8%,
+  93.5%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
-  50%{
+  50% {
     transform: scale(2);
     opacity: 0.5;
   }
@@ -74,11 +97,13 @@ body {
   transform-style: preserve-3d;
   animation: cubeHeight var(--bounceSpeed) infinite ease-out;
 }
-@keyframes cubeHeight{
-  0%, 100% {
+@keyframes cubeHeight {
+  0%,
+  100% {
     height: 1.5em;
   }
-  8%, 93.6%{
+  8%,
+  93.6% {
     height: 2em;
   }
 }
